@@ -12,11 +12,15 @@ def add_features(df: pd.DataFrame) -> pd.DataFrame:
     df["IsAlone"] = (df["FamilySize"] == 1).astype(int)
 
     # Extrair título do nome (Mr, Miss, Mrs, etc)
-    df["Title"] = df["Name"].str.extract(r",\s*([^\.]*)\s*\.", expand=False)
-
-    # Agrupar títulos raros
-    df["Title"] = df["Title"].replace([
-        "Lady","Countess","Capt","Col","Don","Dr","Major","Rev","Sir","Jonkheer","Dona"
-    ], "Rare")
+    if "Name" in df.columns:
+        df["Title"] = df["Name"].str.extract(r', (\w+)\.', expand=False)
+        
+        # Agrupar títulos raros
+        common_titles = ['Mr', 'Miss', 'Mrs', 'Master']
+        df['Title'] = df['Title'].apply(lambda x: x if x in common_titles else 'Rare')
+        
+        # Codificar títulos
+        title_mapping = {'Mr': 1, 'Miss': 2, 'Mrs': 3, 'Master': 4, 'Rare': 5}
+        df['Title'] = df['Title'].map(title_mapping)
 
     return df

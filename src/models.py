@@ -1,4 +1,3 @@
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
@@ -10,7 +9,7 @@ def create_preprocessing_pipeline(numeric_features, categorical_features):
     """Cria pipeline para transformar dados antes do modelo."""
     
     numeric_transformer = StandardScaler()
-    categorical_transformer = OneHotEncoder(handle_unknown="ignore")
+    categorical_transformer = OneHotEncoder(handle_unknown="ignore", sparse_output=False)
 
     preprocessor = ColumnTransformer(
         transformers=[
@@ -24,17 +23,19 @@ def create_preprocessing_pipeline(numeric_features, categorical_features):
 def train_logistic_regression(X, y, preprocessor):
     model = Pipeline(steps=[
         ("preprocessor", preprocessor),
-        ("classifier", LogisticRegression(max_iter=200))
+        ("classifier", LogisticRegression(random_state=42, max_iter=1000))
     ])
     model.fit(X, y)
     dump(model, "models/logistic_regression.joblib")
+    print("Regressão Logística treinada e salva.")
     return model
 
 def train_random_forest(X, y, preprocessor):
     model = Pipeline(steps=[
         ("preprocessor", preprocessor),
-        ("classifier", RandomForestClassifier(n_estimators=200, random_state=42))
+        ("classifier", RandomForestClassifier(n_estimators=100, random_state=42))
     ])
     model.fit(X, y)
     dump(model, "models/random_forest.joblib")
+    print("Random Forest treinada e salva.")
     return model
