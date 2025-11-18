@@ -23,8 +23,11 @@ Embarked: Porto de embarque (C = Cherbourg, Q = Queenstown, S = Southampton)
 Clone o repositório:
 
 bash
+
 git clone https://github.com/Thalles-JG-Silva/titanic-pi1.git
+
 cd titanic-pii
+
 Crie um ambiente virtual (opcional mas recomendado):
 
 bash
