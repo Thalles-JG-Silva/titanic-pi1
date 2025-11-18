@@ -20,26 +20,6 @@ Fare: Tarifa paga
 
 Embarked: Porto de embarque (C = Cherbourg, Q = Queenstown, S = Southampton)
 
-🏗️ Estrutura do Projeto
-text
-titanic-pii/
-├── data/
-│   └── train.csv                 # Dataset de treino
-├── notebooks/
-│   └── 01_exploracao_etl.ipynb  # Análise exploratória e ETL
-├── src/
-│   ├── __init__.py
-│   ├── data_preprocessing.py     # Limpeza e preparação dos dados
-│   ├── features.py              # Engenharia de features
-│   ├── models.py               # Definição dos modelos
-│   ├── train.py               # Pipeline de treinamento
-│   ├── evaluate.py            # Avaliação de modelos
-│   └── visualization.py       # Visualizações
-├── models/                    # Modelos treinados (gerado)
-├── main.py                   # Script principal
-├── requirements.txt          # Dependências
-└── README.md               # Este arquivo
-⚙️ Instalação e Configuração
 Clone o repositório:
 
 bash
