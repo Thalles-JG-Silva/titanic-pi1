@@ -1,188 +1,78 @@
-# 🛳️ Predição de Sobrevivência no Titanic — Projeto de Machine Learning (PI1)
+Projeto Individual (PI1) — Predição de Sobrevivência no Titanic
+Este projeto aplica técnicas de Machine Learning supervisionado para prever se um passageiro do navio Titanic sobreviveu ao desastre, utilizando o dataset original disponibilizado pela competição “Titanic — Machine Learning from Disaster” do Kaggle.
 
-Este projeto aplica técnicas de **Aprendizado de Máquina supervisionado** para prever se um passageiro do Titanic sobreviveu ao desastre, utilizando dados reais disponibilizados pela competição *Titanic - Machine Learning from Disaster* da Kaggle.
+O objetivo é construir um pipeline completo de machine learning, envolvendo exploração dos dados, tratamento, engenharia de atributos, treinamento de modelos e avaliação.
 
-O objetivo é construir um pipeline completo de machine learning, incluindo:
+Seções do Projeto
 
-- Exploração de dados (EDA)
-- Limpeza e transformação
-- Engenharia de atributos
-- Treinamento de modelos (Logistic Regression e Random Forest)
-- Avaliação com métricas, gráficos e análise de importância das features
+Exploração de Dados (EDA)
+• Visualização da distribuição de idade
+• Análise de sobrevivência por sexo e classe
+• Mapa de correlação
+• Análise inicial de variáveis faltantes e insights gerais
 
----
+Pré-processamento
+• Remoção de colunas irrelevantes (Cabin, Name, Ticket, PassengerId)
+• Preenchimento de valores nulos (Age, Fare, Embarked)
+• Codificação de variáveis categóricas
+• Separação em treino e teste
 
-## 📁 **Estrutura do Projeto**
+Engenharia de Atributos
+• Criação de FamilySize
+• Feature IsAlone (viaja sozinho)
+• Extração e padronização de Titles (Mr, Miss, Mrs, Master, Rare)
+
+Modelos Treinados
+• Regressão Logística
+• Random Forest
+Ambos integrados a um pipeline com padronização numérica e OneHotEncoding para categorias.
+
+Avaliação de Modelos
+• Matriz de confusão
+• Curva ROC e cálculo do AUC
+• Curva Precision-Recall
+• Relatório de classificação
+• Importância das features (Random Forest)
+
+Estrutura do Projeto
 
 titanic-pi1/
-│── data/
+├── data/
 │ └── train.csv
-│
-│── models/
-│ ├── logistic_regression.joblib
-│ └── random_forest.joblib
-│
-│── notebooks/
+├── notebooks/
 │ └── 01_exploracao_etl.ipynb
-│
-│── src/
+├── src/
 │ ├── data_preprocessing.py
-│ ├── evaluate.py
 │ ├── features.py
 │ ├── models.py
 │ ├── train.py
+│ ├── evaluate.py
 │ └── visualization.py
-│
-│── main.py
-│── requirements.txt
-│── README.md
-└── .gitignore
+├── models/
+│ ├── logistic_regression.joblib
+│ └── random_forest.joblib
+├── main.py
+├── README.md
+└── requirements.txt
 
-markdown
-Copiar código
+Como Executar
 
----
-
-## 🧠 **Técnicas e Modelos Utilizados**
-
-### 🔹 Pré-processamento
-- Remoção de colunas inúteis ou com muitos valores ausentes
-- Preenchimento de valores faltantes
-- Label Encoding e One-Hot Encoding
-- Normalização de variáveis numéricas
-
-### 🔹 Engenharia de Atributos
-- `FamilySize`
-- `IsAlone`
-- Extração e categorização de títulos do nome: *Mr, Miss, Mrs, Master, Rare*
-
-### 🔹 Modelos Treinados
-- **Regressão Logística**
-- **Random Forest**
-
-### 🔹 Métricas de Avaliação
-- Accuracy
-- Classification Report
-- Matriz de Confusão
-- Curva ROC e AUC
-- Precision-Recall Curve
-- Importância das Features
-
----
-
-## 🚀 **Como Executar o Projeto**
-
-### 1️⃣ **Instale as dependências**
-
-```bash
+Instale as dependências:
 pip install -r requirements.txt
-2️⃣ Garanta que o arquivo train.csv esteja em:
-bash
-Copiar código
-data/train.csv
-3️⃣ Execute o pipeline completo
-bash
-Copiar código
+
+Execute o pipeline completo:
 python main.py
-Ao final, você verá:
 
-Métricas dos modelos
+Para rodar as análises e visualizações do notebook:
+Abra o arquivo notebooks/01_exploracao_etl.ipynb no Jupyter Lab ou Jupyter Notebook.
 
-Gráficos de avaliação
+Sobre as Técnicas Utilizadas
+• Pandas e NumPy para preparação de dados
+• Visualizações com Seaborn e Matplotlib
+• Modelagem com Scikit-Learn
+• Pipelines para padronizar todo o fluxo de transformação + modelo
+• Visualização de importância das features
+• Avaliação completa de métricas de classificação
 
-Importância das features
-
-Modelos salvos na pasta /models
-
-📊 Exploração Inicial (EDA)
-O notebook 01_exploracao_etl.ipynb realiza:
-
-Visualização de sobreviventes
-
-Distribuição de idade
-
-Correlação entre variáveis
-
-Análises por sexo e classe
-
-Principais observações:
-
-Mulheres e crianças tiveram maior taxa de sobrevivência
-
-Passageiros da 1ª classe sobreviveram muito mais
-
-Cabin tem muitos valores ausentes → removido
-
-Age e Embarked exigem tratamento
-
-Fare e Pclass são fortemente relevantes
-
-🧪 Resultados Esperados
-Accuracy média: ~78% a 82%
-
-Random Forest costuma ter desempenho superior
-
-Features mais importantes:
-
-Sex
-
-Pclass
-
-Fare
-
-FamilySize
-
-Title
-
-📦 Dependências
-Todas listadas em requirements.txt:
-
-nginx
-Copiar código
-pandas
-numpy
-scikit-learn
-matplotlib
-seaborn
-joblib
-jupyterlab
-notebook
-👨‍💻 Como o Código Funciona
-🔸 main.py
-Executa todo o pipeline:
-
-Carrega os dados
-
-Faz limpeza e encoding
-
-Divide treino/teste
-
-Cria pipeline de preprocessamento
-
-Treina Logistic Regression e Random Forest
-
-Avalia ambos
-
-Plota gráficos
-
-Exibe importância das features
-
-🔸 src/train.py
-Contém a lógica principal de treinamento e avaliação.
-
-🔸 src/models.py
-Cria o pipeline de transformação + classificador.
-
-🔸 src/data_preprocessing.py
-Toda a limpeza e preparação dos dados.
-
-🔸 src/evaluate.py
-Métricas e gráficos de desempenho.
-
-🔸 src/visualization.py
-Gráficos do EDA e importância das features.
-
-🏁 Conclusão
-Este projeto demonstra de ponta a ponta como estruturar um pipeline robusto de Machine Learning, desde a análise exploratória até a avaliação final dos modelos.
-
-Serve como base para trabalhos acadêmicos, portfólio e aprendizado prático de ML.
+Resultado Final
+O projeto treina dois modelos, avalia suas curvas e métricas e identifica quais variáveis mais influenciam na sobrevivência dos passageiros. Ele representa um pipeline realista e bem estruturado de machine learning aplicado a um dataset clássico.
