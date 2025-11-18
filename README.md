@@ -1,78 +1,99 @@
-Projeto Individual (PI1) — Predição de Sobrevivência no Titanic
-Este projeto aplica técnicas de Machine Learning supervisionado para prever se um passageiro do navio Titanic sobreviveu ao desastre, utilizando o dataset original disponibilizado pela competição “Titanic — Machine Learning from Disaster” do Kaggle.
+Título: Predição de Sobrevivência no Titanic – Projeto Individual (PI1)
 
-O objetivo é construir um pipeline completo de machine learning, envolvendo exploração dos dados, tratamento, engenharia de atributos, treinamento de modelos e avaliação.
+Descrição Geral:
+Este projeto tem como objetivo construir um modelo de Machine Learning capaz de prever quais passageiros sobreviveram ao naufrágio do Titanic, utilizando o dataset clássico disponibilizado pelo Kaggle.
+O trabalho envolve exploração de dados, limpeza, engenharia de atributos, treinamento, avaliação e criação de um pipeline estruturado.
 
 Seções do Projeto
 
-Exploração de Dados (EDA)
-• Visualização da distribuição de idade
-• Análise de sobrevivência por sexo e classe
-• Mapa de correlação
-• Análise inicial de variáveis faltantes e insights gerais
+Análise Exploratória (EDA)
+A primeira etapa consiste em analisar os dados para identificar padrões, tendências e possíveis problemas.
+Entre as visualizações e descobertas incluem-se:
+• Distribuição das idades
+• Sobrevivência por sexo e por classe social
+• Relação entre tarifa, idade e sobrevivência
+• Mapa de correlação entre variáveis
+• Identificação de dados ausentes
 
-Pré-processamento
-• Remoção de colunas irrelevantes (Cabin, Name, Ticket, PassengerId)
-• Preenchimento de valores nulos (Age, Fare, Embarked)
-• Codificação de variáveis categóricas
-• Separação em treino e teste
+Pré-Processamento dos Dados
+O conjunto de dados passa por um tratamento completo:
+• Remoção das colunas que não contribuem para o modelo (Cabin, Name, Ticket, PassengerId)
+• Preenchimento de valores nulos
+• Conversão de variáveis categóricas em numéricas
+• Separação dos dados em treino e teste
 
 Engenharia de Atributos
-• Criação de FamilySize
-• Feature IsAlone (viaja sozinho)
-• Extração e padronização de Titles (Mr, Miss, Mrs, Master, Rare)
+Novas variáveis são criadas para enriquecer o modelo:
+• FamilySize (tamanho da família)
+• IsAlone (viaja sozinho ou não)
+• Extração dos títulos (Mr, Miss, Mrs, Master, Rare) a partir da coluna Name
+• Agrupamento de faixas de idade
+• Normalização e padronização quando necessário
 
-Modelos Treinados
+Modelos Utilizados
+Dois algoritmos principais foram treinados:
 • Regressão Logística
 • Random Forest
-Ambos integrados a um pipeline com padronização numérica e OneHotEncoding para categorias.
+Ambos integrados em um pipeline automatizado que inclui pré-processamento, codificação categórica e padronização numérica.
 
-Avaliação de Modelos
+Avaliação dos Modelos
+Os modelos passam por uma análise completa de desempenho:
 • Matriz de confusão
-• Curva ROC e cálculo do AUC
+• Acurácia, precisão, recall e F1-score
+• Curva ROC e cálculo da área AUC
 • Curva Precision-Recall
-• Relatório de classificação
 • Importância das features (Random Forest)
 
-Estrutura do Projeto
+Estrutura do Projeto (reescrita para ficar perfeita no GitHub)
 
-titanic-pi1/
-├── data/
-│ └── train.csv
-├── notebooks/
-│ └── 01_exploracao_etl.ipynb
-├── src/
-│ ├── data_preprocessing.py
-│ ├── features.py
-│ ├── models.py
-│ ├── train.py
-│ ├── evaluate.py
-│ └── visualization.py
-├── models/
-│ ├── logistic_regression.joblib
-│ └── random_forest.joblib
+titanic-pi1
+│
+├── data
+│ Contém o arquivo train.csv utilizado no projeto.
+│
+├── notebooks
+│ 01_exploracao_etl.ipynb – Notebook com toda a análise exploratória.
+│
+├── src
+│ data_preprocessing.py – Funções de limpeza e preparação dos dados
+│ features.py – Criação de novas variáveis e transformações
+│ models.py – Configuração e criação dos modelos
+│ train.py – Execução do treinamento dos modelos
+│ evaluate.py – Funções de avaliação e métricas
+│ visualization.py – Gráficos e visualizações
+│
+├── models
+│ logistic_regression.joblib – Modelo treinado
+│ random_forest.joblib – Modelo treinado
+│
 ├── main.py
-├── README.md
-└── requirements.txt
+│ Script principal que executa o pipeline completo.
+│
+├── requirements.txt
+│ Lista de dependências necessárias.
+│
+└── README.md
+Arquivo de documentação do projeto.
 
-Como Executar
+Como Executar o Projeto
 
-Instale as dependências:
+Instale todas as dependências:
 pip install -r requirements.txt
 
 Execute o pipeline completo:
 python main.py
 
-Para rodar as análises e visualizações do notebook:
-Abra o arquivo notebooks/01_exploracao_etl.ipynb no Jupyter Lab ou Jupyter Notebook.
+Para usar o notebook:
+Abra o arquivo 01_exploracao_etl.ipynb utilizando Jupyter Notebook ou Jupyter Lab.
 
-Sobre as Técnicas Utilizadas
-• Pandas e NumPy para preparação de dados
-• Visualizações com Seaborn e Matplotlib
-• Modelagem com Scikit-Learn
-• Pipelines para padronizar todo o fluxo de transformação + modelo
-• Visualização de importância das features
-• Avaliação completa de métricas de classificação
+Tecnologias Aplicadas
+• Python
+• Pandas
+• NumPy
+• Scikit-Learn
+• Matplotlib
+• Seaborn
+• Joblib
 
 Resultado Final
-O projeto treina dois modelos, avalia suas curvas e métricas e identifica quais variáveis mais influenciam na sobrevivência dos passageiros. Ele representa um pipeline realista e bem estruturado de machine learning aplicado a um dataset clássico.
+O projeto gera dois modelos de machine learning treinados e avaliados, permitindo entender quais fatores mais contribuíram para a sobrevivência no Titanic e fornecendo uma base sólida para estudos, portfólio ou evolução para uma API no futuro.
