@@ -43,7 +43,7 @@ titanic-pii/
 Clone o repositório:
 
 bash
-git clone https://github.com/Thailes-X6-Silva/titanic-pii.git
+git clone https://github.com/Thalles-JG-Silva/titanic-pi1.git
 cd titanic-pii
 Crie um ambiente virtual (opcional mas recomendado):
 
