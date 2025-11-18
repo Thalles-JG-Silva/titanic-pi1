@@ -1,143 +1,156 @@
-🚢 Projeto Titanic - Predição de Sobrevivência
-Este projeto implementa uma solução de Machine Learning para prever a sobrevivência de passageiros do Titanic baseado em características como classe, gênero, idade e tarifa paga.
+# 🚢 Projeto Titanic — Predição de Sobrevivência
 
-📊 Sobre o Dataset
-O dataset contém informações de 891 passageiros do Titanic com as seguintes características:
+Este projeto implementa um pipeline completo de **Machine Learning** para prever a sobrevivência de passageiros do Titanic a partir de atributos como classe, gênero, idade, tamanho da família e tarifa.
+O objetivo é demonstrar um fluxo completo de análise, tratamento de dados, modelagem e avaliação.
 
-Survived: Sobreviveu (0 = Não, 1 = Sim)
+---
 
-Pclass: Classe do ticket (1ª, 2ª, 3ª classe)
+## 📊 Sobre o Dataset
 
-Sex: Gênero
+O dataset contém informações de **891 passageiros** e inclui as seguintes variáveis:
 
-Age: Idade
+* **Survived** — Sobreviveu (0 = Não, 1 = Sim)
+* **Pclass** — Classe do ticket (1ª, 2ª, 3ª classe)
+* **Sex** — Gênero
+* **Age** — Idade
+* **SibSp** — Nº de irmãos/cônjuges a bordo
+* **Parch** — Nº de pais/filhos a bordo
+* **Fare** — Tarifa paga
+* **Embarked** — Porto de embarque (C = Cherbourg, Q = Queenstown, S = Southampton)
 
-SibSp: Número de irmãos/cônjuges a bordo
+---
 
-Parch: Número de pais/filhos a bordo
+## 🛠️ Instalação e Configuração
 
-Fare: Tarifa paga
+### 1. Clone o repositório
 
-Embarked: Porto de embarque (C = Cherbourg, Q = Queenstown, S = Southampton)
-
-Clone o repositório:
-
-bash
-
+```bash
 git clone https://github.com/Thalles-JG-Silva/titanic-pi1.git
+cd titanic-pi1
+```
 
-cd titanic-pii
+### 2. (Opcional, mas recomendado) Crie um ambiente virtual
 
-Crie um ambiente virtual (opcional mas recomendado):
-
-bash
-
+```bash
 python -m venv venv
 
-source venv/bin/activate  # Linux/Mac
+# Linux/macOS
+source venv/bin/activate
 
-venv\Scripts\activate    # Windows
+# Windows
+venv\Scripts\activate
+```
 
-Instale as dependências:
+### 3. Instale as dependências
 
-bash
-
+```bash
 pip install -r requirements.txt
+```
 
-🚀 Como Executar
+---
 
-Execução Completa do Pipeline
+## 🚀 Como Executar
 
-bash
+### ✔ Execução Completa do Pipeline
 
+```bash
 python main.py
+```
 
-Execução por Etapas
+### ✔ Execução por Etapas
 
-Análise Exploratória:
+**1. Análise Exploratória**
 
-bash
-
+```bash
 jupyter notebook notebooks/01_exploracao_etl.ipynb
+```
 
-Treinamento dos Modelos:
+**2. Treinamento dos Modelos**
 
-bash
-
+```bash
 python src/train.py
+```
 
-🔧 Módulos Principais
+---
 
-📁 src/data_preprocessing.py
+## 🔧 Estrutura dos Módulos
 
-Carregamento e limpeza de dados
+### 📁 `src/data_preprocessing.py`
 
-Tratamento de valores missing
+* Carregamento dos dados
+* Limpeza e tratamento de missing values
+* Codificação de variáveis categóricas
 
-Codificação de variáveis categóricas
+### 📁 `src/features.py`
 
-📁 src/features.py
-Engenharia de features:
+Engenharia de atributos:
 
-FamilySize: Tamanho da família
+* `FamilySize` — tamanho da família
+* `IsAlone` — indica se o passageiro estava sozinho
+* `Title` — título extraído do nome
 
-IsAlone: Passageiro viaja sozinho
+### 📁 `src/models.py`
 
-Title: Título extraído do nome
+* Construção do pipeline
+* Modelos implementados:
 
-📁 src/models.py
-Pipeline de pré-processamento
+  * Regressão Logística
+  * Random Forest
 
-Modelos implementados:
+### 📁 `src/evaluate.py`
 
-Regressão Logística
+* Cálculo de métricas
+* Matriz de confusão
+* Curvas ROC e Precision–Recall
 
-Random Forest
+---
 
-📁 src/evaluate.py
-Métricas de avaliação
+## 🤖 Modelos Implementados
 
-Matriz de confusão
+| Modelo              | Acurácia | Precisão | Recall | F1-Score |
+| ------------------- | -------- | -------- | ------ | -------- |
+| Regressão Logística | —        | —        | —      | —        |
+| Random Forest       | —        | —        | —      | —        |
 
-Curvas ROC e Precision-Recall
+**As métricas serão inseridas após a execução do treinamento.**
 
-🤖 Modelos Implementados
-Modelo	Acurácia	Précision	Recall	F1-Score
-Regressão Logística	-	-	-	-
-Random Forest	-	-	-	-
-Nota: As métricas serão preenchidas após execução do treinamento
+---
 
-📈 Principais Insights
-Mulheres e crianças tiveram maior taxa de sobrevivência
+## 📈 Principais Insights Obtidos
 
-Passageiros da 1ª classe sobreviveram mais que os da 3ª classe
+* Mulheres e crianças tiveram maior taxa de sobrevivência.
+* Passageiros da 1ª classe sobreviveram mais que os da 3ª classe.
+* Famílias menores apresentaram melhores chances de sobrevivência.
+* Idade foi um dos fatores mais relevantes para a predição.
 
-Famílias menores tiveram melhor chance de sobrevivência
+---
 
-Idade é um fator importante na predição
+## 🛠️ Tecnologias Utilizadas
 
-🛠️ Tecnologias Utilizadas
-Python 3.8+
+* **Python 3.8+**
+* **Pandas & NumPy** — manipulação de dados
+* **Scikit-learn** — modelagem e avaliação
+* **Matplotlib & Seaborn** — visualização
+* **Jupyter Notebook** — análise exploratória
 
-Pandas & NumPy: Manipulação de dados
+---
 
-Scikit-learn: Machine Learning
+## 📋 Pré-requisitos
 
-Matplotlib & Seaborn: Visualização
+* Python 3.8 ou superior
+* pip instalado
+* Recomendado: 4 GB de RAM
 
-Jupyter: Análise exploratória
+---
 
-📋 Pré-requisitos
-Python 3.8 ou superior
+## 👥 Desenvolvimento
 
-pip (gerenciador de pacotes Python)
+**Autor:** Thalles Silva
+**Repositório:** [GitHub](https://github.com/Thalles-JG-Silva/titanic-pi1)
 
-4GB de RAM recomendados
+---
 
-👥 Desenvolvimento
-Autor: Thalles Silva
-Repositório: GitHub
+## 📄 Licença
 
-📄 Licença
-Este projeto é para fins educacionais. O dataset do Titanic é de domínio público.
-
+Este projeto é destinado a fins educacionais.
+O dataset Titanic é de domínio público.
