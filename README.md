@@ -31,28 +31,45 @@ cd titanic-pii
 Crie um ambiente virtual (opcional mas recomendado):
 
 bash
+
 python -m venv venv
+
 source venv/bin/activate  # Linux/Mac
+
 venv\Scripts\activate    # Windows
+
 Instale as dependências:
 
 bash
+
 pip install -r requirements.txt
+
 🚀 Como Executar
+
 Execução Completa do Pipeline
+
 bash
+
 python main.py
+
 Execução por Etapas
+
 Análise Exploratória:
 
 bash
+
 jupyter notebook notebooks/01_exploracao_etl.ipynb
+
 Treinamento dos Modelos:
 
 bash
+
 python src/train.py
+
 🔧 Módulos Principais
+
 📁 src/data_preprocessing.py
+
 Carregamento e limpeza de dados
 
 Tratamento de valores missing
